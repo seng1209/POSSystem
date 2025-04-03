@@ -68,14 +68,16 @@ public class ImportServiceImpl implements ImportService {
             log.info("Supplier UUID : {}", updateImportDto.supplierUuid());
 
             if (updateImportDto.staffUuid() != null){
-                Staff newStaff = new Staff();
-                newStaff.setUuid(updateImportDto.staffUuid());
+                Staff newStaff = staffRepository.findByUuid(updateImportDto.staffUuid()).orElseThrow(
+                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Staff not found.")
+                );
                 imports.setStaff(newStaff);
             }
 
             if (updateImportDto.supplierUuid() != null){
-                Supplier newSupplier = new Supplier();
-                newSupplier.setUuid(updateImportDto.supplierUuid());
+                Supplier newSupplier = supplierRepository.findByUuid(updateImportDto.staffUuid()).orElseThrow(
+                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Supplier")
+                );
                 imports.setSupplier(newSupplier);
             }
 

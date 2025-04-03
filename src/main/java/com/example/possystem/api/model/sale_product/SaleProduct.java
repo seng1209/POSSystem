@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Setter
 @Getter
@@ -19,6 +20,9 @@ public class SaleProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String uuid;
 
     @ManyToOne
     @JoinColumn(name = "sales_id")

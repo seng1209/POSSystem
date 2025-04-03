@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Setter
@@ -22,7 +23,7 @@ public class Sale {
     private Long id;
     @Column(nullable = false, unique = true)
     private String uuid;
-    private Date saleDate;
+    private LocalDate saleDate;
 
     @ManyToOne
     @JoinColumn(name = "staff_id")
